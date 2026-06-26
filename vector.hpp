@@ -11,10 +11,13 @@ class VectorType {
     std::vector<double> myVector;
 
     public:
-    //1. Default & Paramaterized Constuctor
+    //Default & Paramaterized Constuctor
     VectorType();
     VectorType(size_t size);
 
+    //I/O Operators
+    friend std::istream& operator>>(std::istream& is, VectorType& v);
+    friend std::ostream& operator<<(std::ostream& os, const VectorType& v);
 };
 
 #endif
