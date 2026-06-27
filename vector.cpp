@@ -9,8 +9,20 @@ VectorType::VectorType(size_t size){
     myVector.resize(size);
 }
 
+void VectorType::validateNotEmpty() const {
+    if (myVector.empty()){
+        throw std::invalid_argument("vector must be not empty");
+    }
+}
+
+void VectorType::validateSameSize(const VectorType& other) const {
+    if (myVector.size() != other.myVector.size()){
+        throw std::invalid_argument("vectors must be the same size");
+    }
+}
+
 std::istream& operator>>(std::istream& is, VectorType& v){
-    for (int i = 0; i < v.myVector.size(); i++){
+    for (size_t i = 0; i < v.myVector.size(); i++){
         is >> v.myVector[i];
     }
     return is;
@@ -18,7 +30,7 @@ std::istream& operator>>(std::istream& is, VectorType& v){
 
 std::ostream& operator<<(std::ostream& os, const VectorType& v){
     os << "|";
-    for (int i = 0; i < v.myVector.size(); i++){
+    for (size_t i = 0; i < v.myVector.size(); i++){
         if (i == v.myVector.size()-1){
             os << v.myVector[i];
         }
@@ -28,4 +40,26 @@ std::ostream& operator<<(std::ostream& os, const VectorType& v){
     }
     os << "|";
     return os;
+}
+
+double VectorType::vectorNorm() const {
+    validateNotEmpty();
+
+    double norm = 0;
+    for (double value : myVector){
+        norm += pow(value, 2);
+    }
+    return sqrt(norm);
+}
+
+double VectorType::dotProduct(const VectorType& other) const {
+    validateNotEmpty();
+    other.validateNotEmpty();;
+    validateSameSize(other);
+
+    double result = 0;
+    for(size_t i = 0; i < myVector.size(); i++){
+        result += myVector[i] * other.myVector[i];
+    }
+    return result;
 }
