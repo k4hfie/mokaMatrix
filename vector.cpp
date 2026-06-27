@@ -45,11 +45,11 @@ std::ostream& operator<<(std::ostream& os, const VectorType& v){
 double VectorType::vectorNorm() const {
     validateNotEmpty();
 
-    double norm = 0;
+    double result = 0;
     for (double value : myVector){
-        norm += pow(value, 2);
+        result += pow(value, 2);
     }
-    return sqrt(norm);
+    return sqrt(result);
 }
 
 double VectorType::dotProduct(const VectorType& other) const {
