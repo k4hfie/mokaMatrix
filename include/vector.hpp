@@ -17,6 +17,7 @@ class VectorType {
     //Helper Functions for Error Handling
     void validateNotEmpty() const;
     void validateSameSize(const VectorType& other) const;
+    void validateVector(const VectorType& other) const;
 
     //I/O Operators
     friend std::istream& operator>>(std::istream& is, VectorType& v);
@@ -25,6 +26,12 @@ class VectorType {
     //General Functions
     double vectorNorm() const;
     double dotProduct(const VectorType& other) const;
+
+    //Aritmethic Operators
+    VectorType operator+(const VectorType& other) const;
+    VectorType operator-(const VectorType& other) const;
+    VectorType operator*(const double scalar) const;
+    VectorType operator/(const double scalar) const;
 };
 
 #endif

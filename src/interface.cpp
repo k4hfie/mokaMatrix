@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "interface.hpp"
 
-void clear(){
+void clearTerminal(){
     printf("\033[2J\033[H");
 }
 

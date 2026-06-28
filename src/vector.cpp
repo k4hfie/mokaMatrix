@@ -12,6 +12,7 @@ VectorType::VectorType(size_t size){
     myVector.resize(size);
 }
 
+
 void VectorType::validateNotEmpty() const {
     if (myVector.empty()){
         throw std::invalid_argument("vector must be not empty");
@@ -22,6 +23,12 @@ void VectorType::validateSameSize(const VectorType& other) const {
     if (myVector.size() != other.myVector.size()){
         throw std::invalid_argument("vectors must be the same size");
     }
+}
+
+void VectorType::validateVector(const VectorType& other) const {
+    validateNotEmpty();
+    other.validateNotEmpty();
+    validateSameSize(other);
 }
 
 std::istream& operator>>(std::istream& is, VectorType& v){
@@ -56,13 +63,54 @@ double VectorType::vectorNorm() const {
 }
 
 double VectorType::dotProduct(const VectorType& other) const {
-    validateNotEmpty();
-    other.validateNotEmpty();;
-    validateSameSize(other);
+    validateVector(other);
 
     double result = 0;
     for(size_t i = 0; i < myVector.size(); i++){
         result += myVector[i] * other.myVector[i];
     }
     return result;
+}
+
+VectorType VectorType::operator+(const VectorType& other) const {
+    validateVector(other);
+    
+    VectorType resultVector(myVector.size());
+    for(size_t i = 0; i < myVector.size(); i++){
+        resultVector.myVector[i] = myVector[i] + other.myVector[i];
+    }
+    return resultVector;
+}
+
+VectorType VectorType::operator-(const VectorType& other) const {
+    validateVector(other);
+    
+    VectorType resultVector(myVector.size());
+    for(size_t i = 0; i < myVector.size(); i++){
+        resultVector.myVector[i] = myVector[i] - other.myVector[i];
+    }
+    return resultVector;
+}
+
+VectorType VectorType::operator*(const double scalar) const {
+    validateNotEmpty();
+    
+    VectorType resultVector(myVector.size());
+    for(size_t i = 0; i < myVector.size(); i++){
+        resultVector.myVector[i] = myVector[i] * scalar;
+    }
+    return resultVector;
+}
+
+VectorType VectorType::operator/(const double scalar) const {
+    validateNotEmpty();
+    if (scalar == 0){
+        throw std::invalid_argument("cannot divide by zero");
+    }
+
+    VectorType resultVector(myVector.size());
+    for(size_t i = 0; i < myVector.size(); i++){
+        resultVector.myVector[i] = myVector[i] / scalar;
+    }
+    return resultVector;
 }
