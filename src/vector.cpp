@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <cstddef>
-#include "vector.hpp"
+#include "vector.h"
 
 VectorType::VectorType(){
     myVector = {};

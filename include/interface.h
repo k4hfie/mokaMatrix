@@ -1,5 +1,5 @@
-#ifndef interface_HPP
-#define interface_HPP
+#ifndef interface_H
+#define interface_H
 
 void clearTerminal();
 void displayTitle();

@@ -1,5 +1,5 @@
 #include <cstdio>
-#include "interface.hpp"
+#include "interface.h"
 
 void clearTerminal(){
     printf("\033[2J\033[H");
