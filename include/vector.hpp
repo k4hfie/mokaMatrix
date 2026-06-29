@@ -32,6 +32,10 @@ class VectorType {
     VectorType operator-(const VectorType& other) const;
     VectorType operator*(const double scalar) const;
     VectorType operator/(const double scalar) const;
+
+    //Bool Operators
+    bool operator==(const VectorType& other) const;
+    bool operator!=(const VectorType& other) const;
 };
 
 #endif

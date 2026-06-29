@@ -22,6 +22,10 @@ int main(){
 
         result = vec1 / 10;
         std::cout << "scalar division vector: " << result << "\n";
+
+        std::cout << vec1 << " == " << vec2 << ": " << (vec1 == vec2) << "\n";
+        std::cout << vec1 << " != " << vec2 << ": " << (vec1 != vec2) << "\n";
+
     }
 
     catch (const std::invalid_argument& e){

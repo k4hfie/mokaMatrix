@@ -114,3 +114,25 @@ VectorType VectorType::operator/(const double scalar) const {
     }
     return resultVector;
 }
+
+bool VectorType::operator==(const VectorType& other) const {
+    validateVector(other);
+
+    bool result = true;
+    for (size_t i = 0; i < myVector.size(); i++){
+        if (myVector[i] != other.myVector[i]){
+            result = false;
+        }
+    }
+    return result;
+}
+
+bool VectorType::operator!=(const VectorType& other) const {
+    bool result = false;
+    for (size_t i = 0; i < myVector.size(); i++){
+        if (myVector[i] != other.myVector[i]){
+            result = true;
+        }
+    }
+    return result;
+}
