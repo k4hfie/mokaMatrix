@@ -2,7 +2,8 @@
 #define TOKENIZER_H
 
 #include <string>
+#include <vector>
 
-std::string tokenizeLine(std::string);
+std::vector<std::string> tokenizeLine(const std::string& line);
 
 #endif
