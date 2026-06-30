@@ -25,10 +25,20 @@ void VectorType::validateSameSize(const VectorType& other) const {
     }
 }
 
+void VectorType::validateNotUndefined(const double scalar) const {
+    if (scalar == 0){
+        throw std::invalid_argument("cannot divide by zero");
+    }
+}
+
 void VectorType::validateVector(const VectorType& other) const {
     validateNotEmpty();
     other.validateNotEmpty();
     validateSameSize(other);
+}
+
+double VectorType::operator[](size_t index) const {
+    return myVector[index];
 }
 
 std::istream& operator>>(std::istream& is, VectorType& v){
@@ -104,9 +114,7 @@ VectorType VectorType::operator*(const double scalar) const {
 
 VectorType VectorType::operator/(const double scalar) const {
     validateNotEmpty();
-    if (scalar == 0){
-        throw std::invalid_argument("cannot divide by zero");
-    }
+    validateNotUndefined(scalar);
 
     VectorType resultVector(myVector.size());
     for(size_t i = 0; i < myVector.size(); i++){

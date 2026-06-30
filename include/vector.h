@@ -1,5 +1,5 @@
-#ifndef VECTOR_HPP
-#define VECTOR_HPP
+#ifndef VECTOR_H
+#define VECTOR_H
 
 #include <vector>
 #include <istream>
@@ -17,13 +17,17 @@ class VectorType {
     //Helper Functions for Error Handling
     void validateNotEmpty() const;
     void validateSameSize(const VectorType& other) const;
+    void validateNotUndefined(const double scalar) const;
     void validateVector(const VectorType& other) const;
+
+    //Element Access
+    double operator[](size_t index) const;
 
     //I/O Operators
     friend std::istream& operator>>(std::istream& is, VectorType& v);
     friend std::ostream& operator<<(std::ostream& os, const VectorType& v);
 
-    //General Functions
+    //Vector Functions
     double vectorNorm() const;
     double dotProduct(const VectorType& other) const;
 
@@ -36,6 +40,7 @@ class VectorType {
     //Bool Operators
     bool operator==(const VectorType& other) const;
     bool operator!=(const VectorType& other) const;
+
 };
 
 #endif
