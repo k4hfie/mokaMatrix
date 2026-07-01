@@ -27,6 +27,7 @@ void displayOptionsVector(){
     std::cout << "=============================\n";
     std::cout << "      VECTOR OPERATIONS\n";
     std::cout << "\n";
+    std::cout << "Norm\n";
     std::cout << "Inner Product\n";
     std::cout << "Outer Product\n";
     std::cout << "=============================\n";
@@ -40,3 +41,27 @@ void displayOptionsVector(){
     std::cout << "U != V\n";
     std::cout << "=============================\n";
 }
+
+void displayOptionsMatrix(){
+    std::cout << "            INPUT\n";
+    std::cout << "\n";
+    std::cout << "Input A\n";
+    std::cout << "Input B\n";
+    std::cout << "Input Scalar\n";
+    std::cout << "=============================\n";
+    std::cout << "      MATRIX OPERATIONS\n";
+    std::cout << "Norm\n";
+    std::cout << "Transpose\n";
+    std::cout << "=============================\n";
+    std::cout << "      BASIC OPERATIONS\n";
+    std::cout << "\n";
+    std::cout << "A + B\n";
+    std::cout << "A - B\n";
+    std::cout << "A * B\n";
+    std::cout << "A * Scalar\n";
+    std::cout << "A / Scalar\n";
+    std::cout << "A == B\n";
+    std::cout << "A != B\n";
+    std::cout << "=============================\n";
+}
+
