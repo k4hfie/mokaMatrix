@@ -1,19 +1,42 @@
-#include <cstdio>
 #include "interface.h"
+#include <iostream>
 
 void clearTerminal(){
-    printf("\033[2J\033[H");
+    std::cout << "\033[2J\033[H";
 }
 
 void displayTitle(){
-    printf("=============================\n");
-    printf("      mokaMatrix v1.0.0\n");
-    printf("           by moka\n");
-    printf("=============================\n");
+    std::cout << "=============================\n";
+    std::cout << "      mokaMatrix v1.0.0\n";
+    std::cout << "           by moka\n";
+    std::cout << "=============================\n";
 }
 
-void displayOptions1(){
-    printf("1. Vector\n");
-    printf("2. Matrix\n");
-    printf("=============================\n");
+void displayOptions(){
+    std::cout << "Vector\n";
+    std::cout << "Matrix\n";
+    std::cout << "=============================\n";
+}
+
+void displayOptionsVector(){
+    std::cout << "            INPUT\n";
+    std::cout << "\n";
+    std::cout << "Input U\n";
+    std::cout << "Input V\n";
+    std::cout << "Input Scalar\n";
+    std::cout << "=============================\n";
+    std::cout << "      VECTOR OPERATIONS\n";
+    std::cout << "\n";
+    std::cout << "Inner Product\n";
+    std::cout << "Outer Product\n";
+    std::cout << "=============================\n";
+    std::cout << "      BASIC OPERATIONS\n";
+    std::cout << "\n";
+    std::cout << "U + V\n";
+    std::cout << "U - V\n";
+    std::cout << "U * Scalar\n";
+    std::cout << "U / Scalar\n";
+    std::cout << "U == V\n";
+    std::cout << "U != V\n";
+    std::cout << "=============================\n";
 }
