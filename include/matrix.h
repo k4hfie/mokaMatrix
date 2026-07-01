@@ -19,7 +19,7 @@ class MatrixType {
     size_t size_column() const;
     
     //Element Access
-    
+    double& operator()(size_t row, size_t column);
 
     //I/O Operators
     friend std::istream& operator>>(std::istream& is, MatrixType& m);

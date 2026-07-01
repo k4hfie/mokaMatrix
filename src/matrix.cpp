@@ -23,6 +23,10 @@ size_t MatrixType::size_column() const {
     return myMatrix[0].size();
 }
 
+double& MatrixType::operator()(size_t row, size_t column){
+    return myMatrix[row][column];
+}
+
 std::istream& operator>>(std::istream& is, MatrixType& m){
     for (size_t i = 0; i < m.size_row(); i++){
         for (size_t j = 0; j < m.size_column(); j++){

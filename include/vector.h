@@ -1,6 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include "matrix.h"
 #include <vector>
 #include <istream>
 #include <ostream>
@@ -29,7 +30,8 @@ class VectorType {
 
     //Vector Functions
     double vectorNorm() const;
-    double dotProduct(const VectorType& other) const;
+    double innerProduct(const VectorType& other) const;
+    MatrixType outerProduct(const VectorType& other) const;
 
     //Aritmethic Operators
     VectorType operator+(const VectorType& other) const;

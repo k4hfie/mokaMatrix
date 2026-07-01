@@ -12,7 +12,6 @@ VectorType::VectorType(size_t size){
     myVector.resize(size);
 }
 
-
 void VectorType::validateNotEmpty() const {
     if (myVector.empty()){
         throw std::invalid_argument("vector must be not empty");
@@ -72,12 +71,25 @@ double VectorType::vectorNorm() const {
     return sqrt(result);
 }
 
-double VectorType::dotProduct(const VectorType& other) const {
+double VectorType::innerProduct(const VectorType& other) const {
     validateVector(other);
 
     double result = 0;
     for(size_t i = 0; i < myVector.size(); i++){
         result += myVector[i] * other.myVector[i];
+    }
+    return result;
+}
+
+MatrixType VectorType::outerProduct(const VectorType& other) const {
+    validateNotEmpty();
+    other.validateNotEmpty();
+
+    MatrixType result(myVector.size(), other.myVector.size());
+    for (size_t i = 0; i < myVector.size(); i++){
+        for (size_t j = 0; j < other.myVector.size(); j++){
+            result(i, j) = myVector[i] * other.myVector[j];
+        }
     }
     return result;
 }
